@@ -1,0 +1,67 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.button_{
+    @apply rounded-md px-20 py-3 tracking-wider text-center hover:bg-stone-600 hover:text-stone-200  hover:border-stone-300 font-light cursor-pointer bg-stone-100 border-2 border-stone-600 transition ease-in duration-150;
+    @apply disabled:text-stone-600 disabled:bg-stone-600 disabled:cursor-default
+}
+.banner{
+    background-image: url("../public/assets/images/shirt-mockup-concept-with-plain-clothing.jpg");
+    
+}
+.signin {
+    @apply text-stone-500 hover:scale-125 transform hover:text-orange-900 underline transition ease-out duration-100 cursor-pointer
+}
+
+.button_nav{
+    @apply flex items-center px-6 py-2;
+    @apply hover:text-stone-700 text-stone-500 ;
+    @apply hover:bg-white;
+    @apply transition-colors duration-300 transform rounded-e-lg ;
+}
+.button_navI{
+    @apply w-5 ms-6 h-5
+}
+
+
+.pagination{
+    opacity: 0;
+    animation: paginationOpacity 600ms ease-in forwards;
+}
+
+@keyframes paginationOpacity{
+    0%{
+        opacity: 0;
+    }
+    10%{
+        opacity: 0.1;
+    }
+    20%{
+        opacity: 0.2;
+    }
+    30%{
+        opacity: 0.3;
+    }
+    40%{
+        opacity: 0.4;
+    }
+    50%{
+        opacity: 0.5;
+    }
+    60%{
+        opacity: 0.6;
+    }
+    70%{
+        opacity: 0.7;
+    }
+    80%{
+        opacity: 0.8;
+    }
+    90%{
+        opacity: 0.9;
+    }
+    100%{
+        opacity: 1;
+    }
+}
