@@ -8,6 +8,9 @@ import { Home } from './_root/pages'
 import Clothes_form from './_root/pages/Clothes_form'
 import './globalstyle.css'
 import NotFound from './components/NotFound'
+import MailClothes from './_root/pages/MailClothes'
+import MySales from './_root/pages/MySales'
+import Checklist from './_root/pages/Checklist'
 
 const App = () => {
 
@@ -26,6 +29,9 @@ const App = () => {
             <Route element={ <RootLayout />}>
                 <Route path='/' element={ <Home />}></Route>
                 <Route path='/add_clothes' element={ <Clothes_form />}></Route>
+                <Route path='/mail_clothes' element={ <MailClothes />}></Route>
+                <Route path='/my_sales' element={ <MySales />}></Route>
+                <Route path='/checklists' element={ <Checklist />}></Route>
             </Route>
             <Route path="*" element={<NotFound />} />
         </Routes>

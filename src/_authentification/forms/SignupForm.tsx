@@ -173,7 +173,7 @@ const SignupFrom = () => {
           
           <button type="submit" disabled={!canSubmit} className="button_">S I G N<span className="ms-3">U P</span></button>
 
-          <div className="mt-2">Want <span className="ms-1">to</span><span className=" ms-2 "><Link to="/sign-in" className="signin">Sign up ?</Link></span></div>
+          <div className="mt-2">Want <span className="ms-1">to</span><span className=" ms-2 "><Link to="/sign-in" className="signin">Sign in ?</Link></span></div>
 
         </div>
 

@@ -1,14 +1,26 @@
-import { Grid } from '@mui/material';
+import { Box, Container } from '@mui/material';
 import React from 'react';
 
 const NotFound: React.FC = () => {
   return (
-    <Grid container>
-      <div className="bg-[url('/assets/images/404.jpg')] h-screen w-screen bg-center " >
+    <Container maxWidth="sm">
+      <Box
+        sx={{
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'center',
+          minHeight: '100vh',
+          textAlign: 'center',
+        }}
+      >
 
-      </div>
-    </Grid>
+        {/* Add the image from the public folder */}
+        <img src="/assets/images/404.jpg" alt="404 Robot" />
+      </Box>
+    </Container>
   );
 };
 
 export default NotFound;
+

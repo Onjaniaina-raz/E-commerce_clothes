@@ -6,6 +6,7 @@
     @apply rounded-md px-20 py-3 tracking-wider text-center hover:bg-stone-600 hover:text-stone-200  hover:border-stone-300 font-light cursor-pointer bg-stone-100 border-2 border-stone-600 transition ease-in duration-150;
     @apply disabled:text-stone-600 disabled:bg-stone-600 disabled:cursor-default
 }
+
 .banner{
     background-image: url("../public/assets/images/shirt-mockup-concept-with-plain-clothing.jpg");
     
@@ -20,14 +21,33 @@
     @apply hover:bg-white;
     @apply transition-colors duration-300 transform rounded-e-lg ;
 }
+
+.buttonDel{
+    @apply rounded-md px-20 font-light py-3 transition ease-in duration-150;
+    @apply bg-pink-50 border-2 border-pink-700 text-pink-700;
+    @apply hover:bg-pink-700 hover:text-pink-50  hover:border-pink-700;
+}
+
 .button_navI{
     @apply w-5 ms-6 h-5
 }
 
+.cart_btn{
+    @apply bg-stone-50 hover:bg-stone-500; 
+    @apply border border-stone-500 hover:border-0;
+    @apply font-bold px-2 text-2xl transition ease-in-out duration-100;
+    @apply h-6 w-9 rounded-md cursor-pointer;
+    @apply hover:text-stone-50 text-stone-500
+}
 
 .pagination{
     opacity: 0;
-    animation: paginationOpacity 600ms ease-in forwards;
+    animation: paginationOpacity 600ms ease-out forwards;
+}
+
+.modalReveal {
+    opacity: 0;
+    animation: paginationOpacity 200ms ease-in forwards ;
 }
 
 @keyframes paginationOpacity{

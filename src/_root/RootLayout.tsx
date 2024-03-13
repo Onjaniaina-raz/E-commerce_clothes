@@ -27,11 +27,11 @@ const RootLayout = () => {
     <>
     <div className=" h-screen w-screen pagination">
 
-      <Grid container  className="grid grid-cols-12 bg-stone-50 w-screen">
+      <Grid container className="grid grid-cols-12 bg-white w-screen">
         <Grid item >
           <SideBar/>
         </Grid >
-        <Grid item className=" py-5 mx-auto" md={9} xl={10}>
+        <Grid item className=" py-5 mx-auto" xs={10}>
           <Outlet />
         </Grid>
       </Grid>

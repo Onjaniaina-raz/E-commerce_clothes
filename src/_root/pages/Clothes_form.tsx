@@ -10,6 +10,7 @@ const Clothes_form = () => {
     const [description, setDescription] = useState("");
     const [title, setTitle] = useState("");
     const [price, setPrice] = useState("");
+    const [quantity, setQuantity] = useState("");
 
 
     const [mediaUrl, setMediaUrl] = useState<string>("");
@@ -62,6 +63,7 @@ const Clothes_form = () => {
                     title: title,
                     price: price,
                     description: description,
+                    quantity: quantity,
                     imageUrl: localStorage.getItem('imageUrl'),
                     userId: localStorage.getItem('userId')
                 },
@@ -99,6 +101,7 @@ const Clothes_form = () => {
 
                 <div className="xl:col-span-6 xl:bg-stone-100 ">
                     <div >
+
                         <Container maxWidth="sm" className="h-full xl:mt-8 text-center bx-36 bg-stone-100 rounded py-5 mt-20  " sx={{ borderLeftWidth: 10, borderRightWidth: 10, borderBottomWidth: 10, borderColor: 'rgb(245 245 244)' }} >
                             <Paper className=" h-28 w-28 mx-auto mb-20 my-auto" >
 
@@ -114,44 +117,60 @@ const Clothes_form = () => {
                                     <div className="my-5"></div>
 
                                     <Grid container spacing={2}>
-                                    <Grid item xs={6}>
-                                        <TextField
-                                            label="T i t l e"
-                                            color="primary"
-                                            className=" text-start w-full"
-                                            value={title}
-                                            onChange={(e) => {
-                                                handleInputChange(e, setTitle);
-                                            }}
-                                        />
+                                        <Grid item xs={6}>
+                                            <TextField
+                                                label="T i t l e"
+                                                color="primary"
+                                                className=" text-start w-full"
+                                                value={title}
+                                                onChange={(e) => {
+                                                    handleInputChange(e, setTitle);
+                                                }}
+                                            />
 
                                         </Grid>
-                                        <Grid item xs={6}>
-                                            
-                                        <TextField
-                                            label="P r i c e"
-                                            color="primary"
-                                            InputProps={{
-                                                endAdornment:
-                                                <InputAdornment position="end" >
-                                                    <span className="pe-1 font-bold text-stone-600 text-lg"> $ </span>
-                                                </InputAdornment>
-                                            }}
-                                            className=" text-start w-full"
-                                            value={price}
-                                            onChange={(e) => {
-                                                handleInputChange(e, setPrice);
-                                            }}
-                                        >
-                                        </TextField>
+
+                                        <Grid item xs={4}>
+
+                                            <TextField
+                                                label="P r i c e"
+                                                color="primary"
+                                                InputProps={{
+                                                    endAdornment:
+                                                        <InputAdornment position="end" >
+                                                            <span className="pe-1 font-bold text-stone-600 text-lg"> $ </span>
+                                                        </InputAdornment>
+                                                }}
+                                                className=" text-start w-full"
+                                                value={price}
+                                                onChange={(e) => {
+                                                    handleInputChange(e, setPrice);
+                                                }}
+                                            >
+                                            </TextField>
+
+                                        </Grid>
+
+                                        <Grid item xs={2}>
+
+                                            <TextField
+                                                label="Qty*"
+                                                color="primary"
+                                                className=" text-start w-full"
+                                                value={quantity}
+                                                onChange={(e) => {
+                                                    handleInputChange(e, setQuantity);
+                                                }}
+                                            >
+                                            </TextField>
 
                                         </Grid>
                                     </Grid>
-                                    
+
 
                                     <div className="my-4"></div>
                                     <TextField
-                                        label="T i t l e"
+                                        label="D e s c r i p t i o n"
                                         fullWidth
                                         color="primary"
                                         multiline

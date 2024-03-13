@@ -38,7 +38,6 @@ const SigninForm = () => {
     )
     .then(response => {
       const data = response.data
-      localStorage.setItem('userId', data.id)
 
         if(data.password != password){
           Toast.fire({
@@ -51,7 +50,9 @@ const SigninForm = () => {
             icon:"success",
             title:"Welcome user"
           });
-          localStorage.setItem('userMail', JSON.stringify({email:email}))
+          localStorage.setItem('userMail', JSON.stringify({email:email}));
+          localStorage.setItem('userId', data.id);
+          localStorage.setItem('Email', data.email)
           navigate('/');
         }
       })

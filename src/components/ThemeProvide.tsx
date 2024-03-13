@@ -11,16 +11,6 @@ export const theme_textF_login = createTheme({
   },
   });
 
-  export const themeWhite = createTheme({
-    palette: {
-      primary: {
-        main: '#FFFFFF',
-    },
-    text:{
-      primary:'#FFFFFF'
-    }
-  },
-  });
   
 
   
