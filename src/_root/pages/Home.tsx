@@ -12,15 +12,16 @@ import {
 } from "@material-tailwind/react";
 import { Link } from "react-router-dom";
 import CartModal from "@/components/CartModal";
+import { Toast } from "@/components/Toast";
 
 const Home = () => {
 
   const [selectedClothe, setSelectedClothe] = useState(null);
   const [modalOpen, setModalOpen] = useState(false);
-  
+
   const [clothes, setClothes] = useState([]);
 
-  const handleModalClose = () =>{
+  const handleModalClose = () => {
     setSelectedClothe(null);
     setModalOpen(false);
   }
@@ -29,18 +30,39 @@ const Home = () => {
     setSelectedClothe(clothes);
     setModalOpen(true);
   }
-  
-  const handleCartSubmit =  () => {
-    try{
+
+  const handleCartSubmit = async (cartClothe) => {
+    
+    try {
       const cart = {
-        clohteId : selectedClothe.id,
-        buyerId: localStorage.getItem('userId'),
-        price: "",
-        quantity: ""
+        clotheId: selectedClothe.id,
+        buyerId: parseInt(localStorage.getItem('userId'), 10),
+        quantity: cartClothe.quantity
       }
+
+      await axios.put(`http://localhost:8080/api/cart/updateClothe/${parseInt(selectedClothe.id, 10)}`, {quantity:parseInt(cart.quantity, 10)});
+
+      await axios.post("http://localhost:8080/api/cart/add", cart)
+        .then(() => {
+
+          handleModalClose();
+          Toast.fire({
+            icon: "success",
+            title: "Clothe(s) added to cart"
+          });
+          fetchClothes();
+        })
+
+      console.log(cart);
+
     }
-    catch(error){
-      console.error('Error making cart', error)
+    catch (error) {
+      Toast.fire({
+        icon: "error",
+        title: "Error while adding in your cart"
+      });
+      console.error('Error making cart', error);
+      handleModalClose();
     }
   }
 
@@ -63,7 +85,7 @@ const Home = () => {
     <>
       <div className="bg-stone-100 rounded-lg pagination" style={{ maxHeight: 'calc(100vh - 90px)', overflowY: 'auto' }}>
 
-      <CartModal open={modalOpen} handleClose={handleModalClose} handleCartSubmit={handleCartSubmit} clothesData={selectedClothe}/>
+        <CartModal open={modalOpen} handleClose={handleModalClose} handleCartSubmit={handleCartSubmit} clothesData={selectedClothe} />
 
         <Grid container spacing={2} className="px-4 mt-2">
 
@@ -123,7 +145,7 @@ const Home = () => {
                   clothe.quantity === 1 ? (
                     <span>Unique</span>
                   ) : (
-                  <span>{clothe.quantity}</span>
+                    <span>{clothe.quantity}</span>
                   )
                 }</span>
               </div>

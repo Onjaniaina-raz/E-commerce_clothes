@@ -14,7 +14,7 @@
     "@emotion/styled": "^11.11.0",
     "@material-tailwind/react": "^2.1.9",
     "@mui/material": "^5.15.7",
-    "apexcharts": "^3.46.0",
+    "apexcharts": "^3.48.0",
     "axios": "^1.6.7",
     "bootstrap": "^5.3.2",
     "font-awesome": "^4.7.0",

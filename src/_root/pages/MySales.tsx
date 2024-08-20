@@ -43,7 +43,7 @@ const MySales = () => {
     }
 
     const handleDeleteSubmit = async () => {
-        await axios.delete(`http://localhost:8080/api/clothes/delete/${selectedClothe}`)
+        await axios.put(`http://localhost:8080/api/clothes/delete/${selectedClothe}`)
             .then(() => {
                 Toast.fire({
                     icon: "info",
@@ -57,6 +57,7 @@ const MySales = () => {
                     icon: "error",
                     title: "Error during deleting"
                 })
+                handleDeleteClose();
                 console.log(error)
             })
     }
@@ -84,7 +85,8 @@ const MySales = () => {
                     Toast.fire({
                         icon: "error",
                         title: "Error while updating"
-                    })
+                    });
+                    handleUpdateClose();
                     console.log(error)
                 })
 

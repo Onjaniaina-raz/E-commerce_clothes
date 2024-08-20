@@ -6,36 +6,39 @@ import { Outlet, useNavigate } from "react-router-dom"
 
 const RootLayout = () => {
 
-  const navigate = useNavigate(); 
+  const navigate = useNavigate();
 
-  useEffect( () => {
+  useEffect(() => {
     const userMail = localStorage.getItem('userMail');
 
     if (userMail == null) {
       navigate('/sign-in');
       Toast.fire({
-        icon:'info',
-        title:'Please connect yourself'
+        icon: 'info',
+        title: 'Please connect yourself'
       });
     }
-      console.log(userMail);
-      console.log(localStorage.getItem('userId'))
-  },[]
+    console.log(userMail);
+    console.log(localStorage.getItem('userId'))
+  }, []
   );
 
   return (
     <>
-    <div className=" h-screen w-screen pagination">
+      <div className=" h-screen w-screen pagination">
 
-      <Grid container className="grid grid-cols-12 bg-white w-screen">
-        <Grid item >
-          <SideBar/>
-        </Grid >
-        <Grid item className=" py-5 mx-auto" xs={10}>
-          <Outlet />
+        <Grid container className="grid grid-cols-12 bg-white w-screen">
+
+          <Grid item >
+            <SideBar />
+          </Grid >
+
+          <Grid item className=" py-5 mx-auto" xs={10}>
+            <Outlet />
+          </Grid>
+
         </Grid>
-      </Grid>
-    </div>
+      </div>
     </>
   )
 }

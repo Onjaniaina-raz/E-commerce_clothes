@@ -18,13 +18,14 @@ const SideBar = () => {
             cancelButtonColor: "slate",
             preConfirm: () => {
                 navigate('/sign-in');
-                Toast.fire({
+                Toast.fire({ 
                     title: "User disconnected",
                     icon: 'info'
                 })
             }
         });
     }
+
 
     return (
         <>

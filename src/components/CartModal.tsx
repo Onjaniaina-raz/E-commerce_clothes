@@ -36,13 +36,7 @@ const CartModal = ({ open, handleClose, handleCartSubmit, clothesData }) => {
     const handleFormSubmit = (e) => {
         e.preventDefault();
 
-        handleCartSubmit({ clothesId, buyerId, price, quantity });
-
-        setDescription('');
-        setPrice('');
-        setQuantity(1);
-        setPrice('');
-        setImageUrl('');
+        handleCartSubmit({ clothesId, buyerId, quantity });
 
     }
 
@@ -66,6 +60,8 @@ const CartModal = ({ open, handleClose, handleCartSubmit, clothesData }) => {
             setQuantity(prevQuantity => prevQuantity - 1);
         }
     }
+
+    const total = (price*quantity).toFixed(2);
 
     return (
         <Modal
@@ -109,7 +105,7 @@ const CartModal = ({ open, handleClose, handleCartSubmit, clothesData }) => {
                                     $
                                 </span>
                                 <span className="ps-4 text-2xl">
-                                    {price*quantity}
+                                    {total}
                                 </span>
                             </Grid>
 

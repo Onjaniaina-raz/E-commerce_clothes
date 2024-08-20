@@ -1,17 +1,27 @@
 import { Box, Grid, Modal, ThemeProvider } from "@mui/material";
 import { theme_textF_login } from "./ThemeProvide";
+import { useEffect, useState } from "react";
 
-const ClothesDeleteModal = ({ open, handleDeleteSubmit, handleClose }) => {
+const CartDeleteModal = ({ open, handleModalSubmit, handleClose, cartQuantity }) => {
 
-    
+    const [quantity, setQuantity] = useState(0);
+
+    useEffect(() => {
+        setQuantity(0);
+
+        if (cartQuantity) {
+            setQuantity(cartQuantity.quantity)
+        }
+    },[cartQuantity])
+
     const handleFormSubmit = (e) => {
         e.preventDefault();
-        handleDeleteSubmit();
+        handleModalSubmit({quantity});
 
     }
 
-    return (
-        <Modal
+  return (
+    <Modal
             open={open}
             onClose={handleClose}
             aria-labelledby="modal-title"
@@ -51,14 +61,14 @@ const ClothesDeleteModal = ({ open, handleDeleteSubmit, handleClose }) => {
                                     id="modal-title"
                                     className="font-semibold text-stone-900 py-16 text-center text-2xl  "
                                 >
-                                    Are you sure you want to delete it ?
+                                    Are you sure you want to delete it from your cart ?
                                 </h1>
                                 
 
                                 <div className='d-grid gap-2 mx-auto'>
                                     <div className="d-grid gap-2 col-12 pt-1 mx-auto justify-content-center">
 
-                                        <button type="submit" className="buttonDel">D E L E T E</button>
+                                        <button type="submit" className="button_cancel px-20 py-3">D E L E T E</button>
 
                                     </div>
                                 </div>
@@ -74,7 +84,7 @@ const ClothesDeleteModal = ({ open, handleDeleteSubmit, handleClose }) => {
             </Box>
 
         </Modal>
-    )
+  )
 }
 
-export default ClothesDeleteModal
+export default CartDeleteModal

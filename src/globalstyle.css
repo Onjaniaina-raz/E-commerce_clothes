@@ -37,7 +37,7 @@
     @apply border border-stone-500 hover:border-0;
     @apply font-bold px-2 text-2xl transition ease-in-out duration-100;
     @apply h-6 w-9 rounded-md cursor-pointer;
-    @apply hover:text-stone-50 text-stone-500
+    @apply hover:text-stone-50 text-stone-500 
 }
 
 .pagination{
@@ -48,6 +48,20 @@
 .modalReveal {
     opacity: 0;
     animation: paginationOpacity 200ms ease-in forwards ;
+}
+
+.button_cancel{
+    @apply rounded-lg font-light cursor-pointer py-2 transition ease-in duration-150;
+    @apply hover:bg-gray-600 bg-gray-100;
+    @apply hover:text-gray-200 ;
+    @apply border border-gray-600;
+}
+
+.cart_date{
+    @apply px-6 py-3 text-lg;
+    @apply hover:text-stone-700  ;
+    @apply hover:bg-white border border-stone-300 hover:border-stone-500;
+    @apply transition-colors duration-300 transform rounded-e-lg ;
 }
 
 @keyframes paginationOpacity{
@@ -85,3 +99,4 @@
         opacity: 1;
     }
 }
+

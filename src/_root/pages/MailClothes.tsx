@@ -10,15 +10,64 @@ import {
     CardHeader,
     Typography,
 } from "@material-tailwind/react";
+import CartModal from "@/components/CartModal";
+import { Toast } from "@/components/Toast";
 
 const Home = () => {
 
     const [clothes, setClothes] = useState([]);
+    
+    const [selectedClothe, setSelectedClothe] = useState(null);
+    const [modalOpen, setModalOpen] = useState(false);
 
     useEffect(() => {
         fetchClothes();
         console.log(localStorage.getItem('mailId'));
     }, []);
+
+    const handleModalClose = () => {
+        setSelectedClothe(null);
+        setModalOpen(false);
+      }
+    
+      function handleModalOpen(clothes) {
+        setSelectedClothe(clothes);
+        setModalOpen(true);
+      }
+
+      const handleCartSubmit = async (cartClothe) => {
+    
+        try {
+          const cart = {
+            clotheId: selectedClothe.id,
+            buyerId: parseInt(localStorage.getItem('userId'), 10),
+            quantity: cartClothe.quantity
+          }
+
+          await axios.put(`http://localhost:8080/api/cart/updateClothe/${parseInt(selectedClothe.id, 10)}`, {quantity:parseInt(cart.quantity, 10)});
+
+          await axios.post("http://localhost:8080/api/cart/add", cart)
+            .then(() => {
+              Toast.fire({
+                icon: "success",
+                title: "Clothe(s) added to cart"
+              });
+              handleModalClose();
+              fetchClothes();
+            })
+    
+          console.log(cart);
+    
+        }
+        catch (error) {
+          Toast.fire({
+            icon: "error",
+            title: "Error while adding in your cart"
+          });
+          console.error('Error making cart', error);
+          handleModalClose();
+        }
+      }
 
     const fetchClothes = async () => {
         try {
@@ -34,6 +83,9 @@ const Home = () => {
     return (
         <>
             <div className="bg-stone-50 rounded-lg pagination" >
+
+            <CartModal open={modalOpen} handleClose={handleModalClose} handleCartSubmit={handleCartSubmit} clothesData={selectedClothe} />
+
                 <Grid className="w-full">
                     <div>
                         <Grid container className="ps-4 py-2 bg-white">
@@ -72,6 +124,7 @@ const Home = () => {
                                     </CardBody>
                                     <CardFooter className="pt-0 overflow-hidden rounded-b-lg">
                                         <Button
+                                            onClick={() => handleModalOpen(clothe)}
                                             ripple={false}
                                             fullWidth={true}
                                             className="bg-stone-50 hover:bg-stone-600 text-stone-950 shadow-none hover:scale-105 hover:shadow-none focus:scale-105 focus:shadow-none active:scale-100 hover:text-stone-50 transition ease-in duration-150"
